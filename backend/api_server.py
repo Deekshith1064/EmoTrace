@@ -39,7 +39,7 @@ def log_activity(logs: List[ActivityLog]):
     }
 from storage.activity_db import get_all_logs
 
-@app.get("/get-logs")
+@app.get("/get-logs", response_model=List[ActivityLog])
 def get_logs():
     return get_all_logs()
 
