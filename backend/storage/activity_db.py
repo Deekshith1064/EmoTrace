@@ -44,6 +44,17 @@ def fetch_all_emotions():
     cursor.execute("SELECT * FROM emotion_logs")
     return cursor.fetchall()
 
+def get_all_logs():
+    conn = sqlite3.connect("activity_logs.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT url, duration, timestamp FROM activity_logs ORDER BY id DESC")
+    rows = cursor.fetchall()
+    conn.close()
+
+    return [
+        {"url": row[0], "duration": row[1], "timestamp": row[2]}
+        for row in rows
+    ]
 
 def insert_emotion(emotion, score, timestamp):
     cursor.execute(

@@ -37,7 +37,11 @@ def log_activity(logs: List[ActivityLog]):
         "status": "success",
         "message": f"{len(logs)} logs inserted successfully"
     }
+from storage.activity_db import get_all_logs
 
+@app.get("/get-logs")
+def get_logs():
+    return get_all_logs()
 
 @app.get("/")
 def root():

@@ -6,7 +6,7 @@ let activeStartTime = null;
    SEND LOG TO BACKEND
 ----------------------------- */
 function sendLogsToBackend(logs) {
-  fetch("http://127.0.0.1:8000/log-activity", {
+  fetch("https://emotrace-backend.onrender.com/log-activity", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
